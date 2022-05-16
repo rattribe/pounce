@@ -16,8 +16,11 @@ export LIUSER=$(cat /etc/passwd | grep 1000 | cut -d: -f1)
 cd /tmp
 git clone https://$GHUSER:$GHTOKEN@github.com/$GHUSER/kickstart.git
 
-# Set per
+# Set permissions on cloned files to run correctly.
 chown root:$LIUSER /tmp/kickstart/main.sh
 chmod 4754 /tmp/kickstart/main.sh
 
+# Run main.sh from cloned repo
 /bin/bash /tmp/kickstart/main.sh
+
+# Implement sleep cmd to cleanup?
